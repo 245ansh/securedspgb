@@ -46,6 +46,7 @@ public class SecurityConfig {
         http.authorizeHttpRequests((requests)-> requests
                 .requestMatchers("/api/csrf-token").permitAll()
                 .requestMatchers("/api/admin/**").hasRole("ADMIN")
+                .requestMatchers("/api/audit/**").hasRole("ADMIN")
                 .requestMatchers("/api/auth/public/**").permitAll()
                 .anyRequest().authenticated());
         http.exceptionHandling(exceptionHandling -> exceptionHandling.authenticationEntryPoint(unauthorizedHandler));
