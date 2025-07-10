@@ -6,6 +6,8 @@ import com.secure.notes.models.User;
 import org.springframework.security.access.prepost.PreAuthorize;
 
 import java.util.List;
+import java.util.Optional;
+
 public interface UserService {
     void updateUserRole(Long userId, String roleName);
 
@@ -14,6 +16,8 @@ public interface UserService {
     UserDTO getUserById(Long id);
 
     User findByUsername(String username);
+
+    void deleteUserById(Long id);
 
     void updatePassword(Long userId, String newPassword);
 
@@ -28,4 +32,8 @@ public interface UserService {
     void generatePasswordResetToken(String email);
 
     void resetPassword(String token, String newPassword);
+
+    Optional<User> findByEmail(String email);
+
+    User registerUser(User newUser);
 }
